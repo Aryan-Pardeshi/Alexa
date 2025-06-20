@@ -32,7 +32,6 @@ A Python-based, AI-powered voice assistant that responds to your voice, performs
 📦 Alexa-Voice-Assistant/
 ├── main.py                # Main assistant logic
 ├── config.py              # Static configuration
-├── .env                   # API keys (DO NOT COMMIT THIS)
 ├── requirements.txt       # Python dependencies
 ├── *.mp3                  # Sound effects (start, end, thinking, etc.)
 ├── chat_history.json      # Persistent memory file
