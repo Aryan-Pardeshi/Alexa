@@ -105,7 +105,7 @@ SPOTIPY_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxx
 
 Made with passion by [**Aryan Pardeshi**](https://github.com/Aryan-Pardeshi)
 
-> “I built this assistant to learn, improve, and control my world using code.”
+> “This is my 1st Big Project.”
 
 ---
 
@@ -123,15 +123,3 @@ chat_history.json
 ```
 
 ---
-
-## ⭐ Support & Contributions
-
-If you like this project:
-
-* 🌟 Star it
-* 🍴 Fork it
-* 🧠 Suggest a feature
-* 🐛 Report a bug
-
-Let's build smarter assistants together!
-
