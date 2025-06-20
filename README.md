@@ -22,7 +22,7 @@ A Python-based, AI-powered voice assistant that responds to your voice, performs
 
 ## ✏️ Edit This Project Online
 
-[![Edit in VS Code](https://img.shields.io/badge/Edit%20in-VSCode.dev-blue?logo=visualstudiocode&style=for-the-badge)](https://vscode.dev/github/Aryan-Pardeshi/Alexa-Voice-Assistant)
+[![Edit in VS Code](https://img.shields.io/badge/Edit%20in-VSCode.dev-blue?logo=visualstudiocode&style=for-the-badge)](https://vscode.dev/github/Aryan-Pardeshi/Alexa)
 
 ---
 
