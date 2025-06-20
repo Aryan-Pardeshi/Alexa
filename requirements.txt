@@ -1,0 +1,12 @@
+speechrecognition
+webbrowser-python
+word2number
+gtts
+playsound
+requests
+azure-ai-inference
+azure-core
+pyautogui
+spotipy
+datetime
+python-dotenv
