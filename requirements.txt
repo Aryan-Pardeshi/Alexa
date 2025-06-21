@@ -10,3 +10,4 @@ pyautogui
 spotipy
 datetime
 python-dotenv
+dotenv
