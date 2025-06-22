@@ -11,3 +11,4 @@ spotipy
 datetime
 python-dotenv
 dotenv
+pyaudio

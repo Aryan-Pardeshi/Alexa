@@ -12,7 +12,6 @@ A Python-based, AI-powered voice assistant that responds to your voice, performs
 - 💬 Persistent chat memory (remembers across sessions)
 - ⏰ Reminders (spoken input like “Remind me in 15 minutes”)
 - 🌤️ Weather updates (OpenWeatherMap API)
-- 📰 News headlines (NewsAPI)
 - 🎵 Spotify search and playback (via Spotipy)
 - 🖼️ Screenshot capture (with timestamped filename)
 - 🎲 Fun extras: jokes, roasts, dice rolls, coin flips
@@ -20,9 +19,9 @@ A Python-based, AI-powered voice assistant that responds to your voice, performs
 
 ---
 
-## ✏️ Edit This Project Online
+## Built with
 
-[![Edit in VS Code](https://img.shields.io/badge/Edit%20in-VSCode.dev-blue?logo=visualstudiocode&style=for-the-badge)](https://vscode.dev/github/Aryan-Pardeshi/Alexa)
+<code><img height="30" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/python/python.png"></code>
 
 ---
 
@@ -58,13 +57,17 @@ pip install -r requirements.txt
 
 In the root directory, add your secrets:
 
+## ⚙️ Environment Config (`.env` Example)
+
 ```env
-GIT_TOKEN=your_azure_token
-WEATHER_API=your_openweather_key
-NEWS_API=your_newsapi_key
-SPOTIPY_CLIENT_ID=your_spotify_client_id
-SPOTIPY_CLIENT_SECRET=your_spotify_client_secret
+GIT_TOKEN=ghp_xxxxxxxxxxxxxxxxxxx
+WEATHER_API=xxxxxxxxxxxxxxxxxxx
+SPOTIPY_CLIENT_ID=xxxxxxxxxxxxxxxxxxx
+SPOTIPY_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxx
 ```
+
+---
+
 
 ⚠️ Make sure `.env` is included in `.gitignore`.
 
@@ -83,23 +86,13 @@ python main.py
 * `SpeechRecognition` + `Google` API
 * `gTTS` + `playsound`
 * `Spotipy` (Spotify API wrapper)
-* `NewsAPI` + `OpenWeatherMap API`
+* `OpenWeatherMap API`
 * `pyautogui` for screenshots
 * `python-dotenv` for secure token loading
 
 ---
 
-## ⚙️ Environment Config (`.env` Example)
 
-```env
-GIT_TOKEN=ghp_xxxxxxxxxxxxxxxxxxx
-WEATHER_API=xxxxxxxxxxxxxxxxxxx
-NEWS_API=xxxxxxxxxxxxxxxxxxx
-SPOTIPY_CLIENT_ID=xxxxxxxxxxxxxxxxxxx
-SPOTIPY_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxx
-```
-
----
 
 ## 🙋 Author
 

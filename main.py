@@ -16,7 +16,12 @@ import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 from datetime import datetime
 import json
-from config import SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET, Git_token, newsapi, Weather_api, HISTORY_FILE
+from config import SPOTIPY_CLIENT_ID, SPOTIPY_CLIENT_SECRET, Git_token, Weather_api, HISTORY_FILE
+import requests
+from loc import my_location
+
+city = my_location() # Get the user's city location according to their IP address
+
 
 # Load chat history
 def load_history():
@@ -111,18 +116,19 @@ def aiProcess(command):
 
     return reply
 
-def get_weather():
+def get_weather(city):
     api_key = Weather_api
-    city = "Thane"  # Or you can use IP-based location later
-    url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
-    r = requests.get(url)
-    if r.status_code == 200:
-        data = r.json()
+    try:
+        url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
+        res = requests.get(url)
+        data = res.json()
+
         temp = data["main"]["temp"]
         desc = data["weather"][0]["description"]
-        return f"It's {temp} degrees with {desc} in {city}"
-    else:
-        return "Couldn't fetch weather right now"
+        weather_info = f"The temperature in {city} is {temp}°C and the weather is {desc}"
+        return weather_info
+    except Exception as e:
+        return "Sorry, I couldn't fetch the weather information right now"
     
 def ai_code_writer(prompt):
     # Use Azure OpenAI client for code generation
@@ -294,26 +300,9 @@ def processCommand(command):
     elif "weather" in command.lower():
         speak("Fetching the weather information for you.")
         playsound("thinking.mp3")
-        weather_info = get_weather()
+        weather_info = get_weather(city)
         speak(weather_info)
-    elif "news" in command.lower():
-        url = f"https://newsapi.org/v2/top-headlines?country=in&apiKey={newsapi}"
-        headers = {'User-Agent': 'Mozilla/5.0'}
-        r = requests.get(url, headers=headers)
-
-        if r.status_code == 200:
-            data = r.json()
-            articles = data.get('articles', [])
-            if not articles:
-                speak("Sorry, I couldn't find any news right now.")
-            else:
-                speak("Here are the top 5 technology headlines.")
-                for i, article in enumerate(articles[:5]):  # Only speak top 5
-                    title = article.get('title', 'No title available')
-                    speak(f"Headline {i+1}: {title}")
-        else:
-            speak(f"Failed to fetch headlines: {r.status_code}")
-        webbrowser.open("https://chat.openai.com")
+    
 
     elif "remind" in command.lower():
         # Always clean and extract the part after "remind"
@@ -368,9 +357,15 @@ def processCommand(command):
         command = command.replace(" ", "+")  # Replace spaces with '+' for URL encoding
         speak(f"Opening {command} in your default browser")
         webbrowser.open(f"https://www.google.com/search?q={command}")
+    elif "ip address" in command.lower():
+        speak("Fetching your IP address...")
+        try:
+            ip_address = requests.get('https://api.ipify.org').text
+            speak(f"Your IP address is {ip_address}")
+        except requests.RequestException as e:
+            speak("Sorry, I couldn't fetch your IP address right now.")
+            print("Error fetching IP address:", e)
 
-
-        
     else:
         playsound("thinking.mp3")
         output = aiProcess(command)

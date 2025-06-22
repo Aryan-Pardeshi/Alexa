@@ -8,6 +8,5 @@ import os
 SPOTIPY_CLIENT_ID = os.getenv('SPOTIPY_CLIENT_ID')
 SPOTIPY_CLIENT_SECRET = os.getenv('SPOTIPY_CLIENT_SECRET')
 Git_token = os.getenv('Git_token')
-newsapi = os.getenv('newsapi')
 Weather_api = os.getenv('Weather_api')
 HISTORY_FILE = os.getenv('HISTORY_FILE', 'chat_history.json')
