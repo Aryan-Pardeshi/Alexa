@@ -185,10 +185,6 @@ def set_reminder(text, delay_seconds):
     t.start()
 
 
-
-
-
-
     
 def processCommand(command):
     print(command)
@@ -379,30 +375,25 @@ def processCommand(command):
     
     
 
-if __name__ == "__main__":
+def standalone_listener_loop():
     playsound("start.mp3")
-
-while True:
-    # Listen for the wake word "Alexa"
-    # obtain audio from the microphone
-    r = sr.Recognizer()
-
-    
-    try:
-        with sr.Microphone() as source:
-            print("Listening...")
-            audio = r.listen(source, timeout=2, phrase_time_limit=1)
-            word = r.recognize_google(audio)
-        if(word.lower() == "alexa"):
-            playsound("wake.mp3")
-            # Listen for command
+    while True:
+        r = sr.Recognizer()
+        try:
             with sr.Microphone() as source:
-                print("Alexa Active...")
-                audio = r.listen(source, timeout=5, phrase_time_limit=15)
-                command = r.recognize_google(audio)
-            playsound("end.mp3")
-            processCommand(command)
-            
+                print("Listening...")
+                audio = r.listen(source, timeout=2, phrase_time_limit=1)
+                word = r.recognize_google(audio)
+            if word.lower() == "alexa":
+                playsound("wake.mp3")
+                with sr.Microphone() as source:
+                    print("Alexa Active...")
+                    audio = r.listen(source, timeout=5, phrase_time_limit=15)
+                    command = r.recognize_google(audio)
+                playsound("end.mp3")
+                processCommand(command)
+        except Exception as e:
+            print("Error: {0}".format(e))
 
-    except Exception as e:
-        print("Error: {0}".format(e))
+if __name__ == "__main__":
+    standalone_listener_loop()
